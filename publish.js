@@ -14,6 +14,8 @@ const linkto = helper.linkto
 const resolveAuthorLinks = helper.resolveAuthorLinks
 const hasOwnProp = Object.prototype.hasOwnProperty
 
+const templateOptions = (env && env.conf && env.conf.templateOptions) || {}
+
 let data
 let view
 
@@ -21,6 +23,12 @@ let outdir = path.normalize(env.opts.destination)
 
 function mkdirpSync(filepath) {
   return fs.mkdirSync(filepath, { recursive: true })
+}
+
+function copyFile(filePath) {
+  const target = path.join(outdir, filePath)
+  mkdirpSync(path.dirname(target))
+  fs.copyFileSync(filePath, target)
 }
 
 function find(spec) {
@@ -325,7 +333,7 @@ function buildItemNav(item, itemsSeen, linktoFn) {
     itemNav += linkTitle
 
     if (methods.length || children.length) {
-      itemNav += '<ul className="submenu">'
+      itemNav += '<ul><div class="collapsible-body">'
 
       if (methods.length) {
         for (let method of methods) {
@@ -343,7 +351,7 @@ function buildItemNav(item, itemsSeen, linktoFn) {
         }
       }
 
-      itemNav += '</ul>'
+      itemNav += '</div></ul>'
     }
 
     itemNav += '</li>'
@@ -400,7 +408,9 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
     // })
 
     if (itemsNav.length) {
-      nav += `<h3>${itemHeading}</h3><ul>${itemsNav.join('')}</ul>`
+      nav += `<h3>${itemHeading}</h3><ul class="collapsible">${itemsNav.join(
+        ''
+      )}</ul>`
     }
   }
 
@@ -409,6 +419,34 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
 
 function linktoExternal(longName, name) {
   return linkto(longName, name.replace(/(^"|"$)/g, ''))
+}
+
+/**
+ * Build nav title
+ * @returns
+ */
+function buildNavTitle() {
+  const iconPath = templateOptions.icon
+  const title = templateOptions.title || 'Home'
+  const subTitle = templateOptions.subTitle
+
+  if (iconPath) {
+    copyFile(iconPath)
+  }
+
+  let render = '<div class="nav-title">'
+
+  render += '<div class="nav-title-image">'
+  iconPath && (render += `<img alt="Home" src="${iconPath}" />`)
+  render += '<h2><a href="index.html">' + title + '</a></h2>'
+  render += '</div>'
+
+  subTitle &&
+    (render += '<div class="nav-title-subtititle">' + subTitle + '</div>')
+
+  render += '</div>'
+
+  return render
 }
 
 /**
@@ -426,7 +464,7 @@ function linktoExternal(longName, name) {
  */
 function buildNav(members) {
   let globalNav
-  let nav = '<h2><a href="index.html">Home</a></h2>'
+  let nav = ''
   const seen = {}
 
   nav += buildMemberNav(members.modules, 'Modules', {}, linkto)
@@ -454,6 +492,8 @@ function buildNav(members) {
       nav += `<h3>Global</h3><ul>${globalNav}</ul>`
     }
   }
+
+  nav += ''
 
   return nav
 }
@@ -674,6 +714,12 @@ exports.publish = (taffyData, opts) => {
   view.htmlsafe = htmlsafe
   view.outputSourceFiles = outputSourceFiles
 
+  // Nav heading
+  view.navTitle = buildNavTitle()
+
+  // Footer
+  view.footer = templateOptions.footer
+
   // once for all
   view.nav = buildNav(members)
   attachModuleSymbols(find({ longname: { left: 'module:' } }), members.modules)
@@ -697,6 +743,7 @@ exports.publish = (taffyData, opts) => {
       .concat([
         {
           kind: 'mainpage',
+          readme: opts.readme,
           longname: opts.mainpagetitle ? opts.mainpagetitle : 'Main Page'
         }
       ])
