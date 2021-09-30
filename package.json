@@ -1,0 +1,10 @@
+{
+  "name": "air-jsdoc-template",
+  "version": "1.0.0",
+  "main": "publish.js",
+  "dependencies": {
+    "@jsdoc/util": "^0.2.5",
+    "common-path-prefix": "^3.0.0",
+    "taffydb": "^2.7.3"
+  }
+}
