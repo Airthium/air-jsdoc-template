@@ -329,15 +329,26 @@ function buildItemNav(item, itemsSeen, linktoFn) {
   } else if (!hasOwnProp.call(itemsSeen, item.longname)) {
     let itemNav = '<li>'
 
+    if (methods.length || children.length) {
+      itemNav += '<div class="collapsible-header waves-effect waves-teal">'
+    }
+
     const linkTitle = linktoFn(item.longname, item.name.replace(/^module:/, ''))
     itemNav += linkTitle
 
     if (methods.length || children.length) {
-      itemNav += '<ul><div class="collapsible-body">'
+      itemNav += '</div>'
+    }
+
+    if (methods.length || children.length) {
+      itemNav += '<div class="collapsible-body">'
+      itemNav += '<div class="row">'
+      itemNav += '<div class="col s12 m12">'
+      itemNav += '<ul class="collapsible">'
 
       if (methods.length) {
         for (let method of methods) {
-          itemNav += "<li data-type='method'>"
+          itemNav += '<li>'
           itemNav += linkto(method.longname, method.name)
           itemNav += '</li>'
         }
@@ -351,7 +362,10 @@ function buildItemNav(item, itemsSeen, linktoFn) {
         }
       }
 
-      itemNav += '</div></ul>'
+      itemNav += '</ul>'
+      itemNav += '</div>'
+      itemNav += '</div>'
+      itemNav += '</div>'
     }
 
     itemNav += '</li>'
@@ -363,58 +377,45 @@ function buildItemNav(item, itemsSeen, linktoFn) {
 }
 
 function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
-  let nav = ''
+  if (!items.length) return ''
 
-  if (items.length) {
-    // Pre-process children
-    const itemsWithChildren = items
-      .map((item) => {
-        if (item.memberof) {
-          const parent = items.find((i) => i.longname === item.memberof)
-          if (parent) {
-            parent.children = [...(parent.children || []), item]
+  // Pre-process children
+  const itemsWithChildren = items
+    .map((item) => {
+      if (item.memberof) {
+        const parent = items.find((i) => i.longname === item.memberof)
+        if (parent) {
+          parent.children = [...(parent.children || []), item]
 
-            return
-          }
+          return
         }
-        return item
-      })
-      .filter((i) => i)
+      }
+      return item
+    })
+    .filter((i) => i)
 
-    const itemsNav = itemsWithChildren.map((item) =>
-      buildItemNav(item, itemsSeen, linktoFn)
-    )
+  const itemsNav = itemsWithChildren.map((item) =>
+    buildItemNav(item, itemsSeen, linktoFn)
+  )
 
-    // let itemsNav = ''
+  if (!itemsNav.length) return ''
 
-    // items.forEach((item) => {
-    //   let displayName
-
-    //   if (!hasOwnProp.call(item, 'longname')) {
-    //     itemsNav += `<li>${linktoFn('', item.name)}</li>`
-    //   } else if (!hasOwnProp.call(itemsSeen, item.longname)) {
-    //     if (env.conf.templates.default.useLongnameInNav) {
-    //       displayName = item.longname
-    //     } else {
-    //       displayName = item.name
-    //     }
-    //     itemsNav += `<li>${linktoFn(
-    //       item.longname,
-    //       displayName.replace(/\b(module|event):/g, '')
-    //     )}</li>`
-
-    //     itemsSeen[item.longname] = true
-    //   }
-    // })
-
-    if (itemsNav.length) {
-      nav += `<h3>${itemHeading}</h3><ul class="collapsible">${itemsNav.join(
-        ''
-      )}</ul>`
-    }
-  }
-
-  return nav
+  return (
+    '<li>' +
+    '<div class="collapsible-header waves-effect waves-teal">' +
+    itemHeading +
+    '</div>' +
+    '<div class="collapsible-body">' +
+    '<div class="row">' +
+    '<div class="col s12 m12">' +
+    '<ul class="collapsible">' +
+    itemsNav.join('') +
+    '</ul>' +
+    '</div>' +
+    '</div>' +
+    '</div>' +
+    '</li>'
+  )
 }
 
 function linktoExternal(longName, name) {
@@ -436,13 +437,14 @@ function buildNavTitle() {
 
   let render = '<div class="nav-title">'
 
-  render += '<div class="nav-title-image">'
-  iconPath && (render += `<img alt="Home" src="${iconPath}" />`)
-  render += '<h2><a href="index.html">' + title + '</a></h2>'
-  render += '</div>'
+  if (iconPath) {
+    render += `<img alt="Home" src="${iconPath}" />`
+  }
+  render += '<h1><a href="index.html">' + title + '</a></h1>'
 
-  subTitle &&
-    (render += '<div class="nav-title-subtititle">' + subTitle + '</div>')
+  if (subTitle) {
+    render += '<h5>' + subTitle + '</h5>'
+  }
 
   render += '</div>'
 
@@ -464,7 +466,7 @@ function buildNavTitle() {
  */
 function buildNav(members) {
   let globalNav
-  let nav = ''
+  let nav = '<ul class="collapsible">'
   const seen = {}
 
   nav += buildMemberNav(members.modules, 'Modules', {}, linkto)
@@ -487,13 +489,27 @@ function buildNav(members) {
 
     if (!globalNav) {
       // turn the heading into a link so you can actually get to the global page
-      nav += `<h3>${linkto('global', 'Global')}</h3>`
+      nav += '<li>' + linkto('global', 'Global') + '</li>'
     } else {
-      nav += `<h3>Global</h3><ul>${globalNav}</ul>`
+      nav +=
+        '<li>' +
+        '<div class="collapsible-header waves-effect waves-teal">' +
+        'Global' +
+        '</div>' +
+        '<div class="collapsible-body">' +
+        '<div class="row">' +
+        '<div class="col s12 m12">' +
+        '<ul>' +
+        globalNav +
+        '</ul>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '</li>'
     }
   }
 
-  nav += ''
+  nav += '</ul>'
 
   return nav
 }
