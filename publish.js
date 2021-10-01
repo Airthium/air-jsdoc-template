@@ -331,25 +331,26 @@ function buildItemNav(item, itemsSeen, linktoFn) {
 
     if (methods.length || children.length) {
       itemNav += '<div class="collapsible-header waves-effect waves-teal">'
+    } else {
+      itemNav += '<div class="collapsible-header">'
     }
 
     const linkTitle = linktoFn(item.longname, item.name.replace(/^module:/, ''))
     itemNav += linkTitle
 
-    if (methods.length || children.length) {
-      itemNav += '</div>'
-    }
+    itemNav += '</div>'
 
     if (methods.length || children.length) {
       itemNav += '<div class="collapsible-body">'
-      itemNav += '<div class="row">'
-      itemNav += '<div class="col s12 m12">'
+      itemNav += '<div class="force-indent">'
       itemNav += '<ul class="collapsible">'
 
       if (methods.length) {
         for (let method of methods) {
           itemNav += '<li>'
+          itemNav += '<div class="collapsible-header">'
           itemNav += linkto(method.longname, method.name)
+          itemNav += '</div>'
           itemNav += '</li>'
         }
       }
@@ -363,7 +364,6 @@ function buildItemNav(item, itemsSeen, linktoFn) {
       }
 
       itemNav += '</ul>'
-      itemNav += '</div>'
       itemNav += '</div>'
       itemNav += '</div>'
     }
@@ -406,12 +406,10 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
     itemHeading +
     '</div>' +
     '<div class="collapsible-body">' +
-    '<div class="row">' +
-    '<div class="col s12 m12">' +
+    '<div class="force-indent">' +
     '<ul class="collapsible">' +
     itemsNav.join('') +
     '</ul>' +
-    '</div>' +
     '</div>' +
     '</div>' +
     '</li>'
@@ -424,7 +422,6 @@ function linktoExternal(longName, name) {
 
 /**
  * Build nav title
- * @returns
  */
 function buildNavTitle() {
   const iconPath = templateOptions.icon
@@ -435,20 +432,52 @@ function buildNavTitle() {
     copyFile(iconPath)
   }
 
-  let render = '<div class="nav-title">'
+  let render = '<div class="card horizontal">'
 
   if (iconPath) {
-    render += `<img alt="Home" src="${iconPath}" />`
+    render += '<div class="card-image">'
+    render += '<img alt="Home" src="' + iconPath + '" />'
+    render += '</div>'
   }
-  render += '<h1><a href="index.html">' + title + '</a></h1>'
+  render += '<div class="card-stacked">'
+  render += '<div class="card-content">'
+  render += '<a href="index.html">' + title + '</a>'
+  render += '</div>'
 
   if (subTitle) {
-    render += '<h5>' + subTitle + '</h5>'
+    render += '<div class="card-action">'
+    render += subTitle
+    render += '</div>'
   }
 
   render += '</div>'
+  render += '</div>'
 
   return render
+}
+
+function buildNavAddons() {
+  const menu = templateOptions.menu
+
+  if (!menu) return
+
+  if (!Array.isArray(menu)) log.warn('menu option must be an array')
+
+  return menu
+    .map(
+      (m) =>
+        '<li>' +
+        '<div class="collapsible-header">' +
+        '<a href="' +
+        m.link +
+        '" target="_blank" style="display: flex; align-items: center;">' +
+        '<i class="small material-icons">link</i>' +
+        m.label +
+        '</a>' +
+        '</div>' +
+        '</li>'
+    )
+    .join('')
 }
 
 /**
@@ -489,7 +518,12 @@ function buildNav(members) {
 
     if (!globalNav) {
       // turn the heading into a link so you can actually get to the global page
-      nav += '<li>' + linkto('global', 'Global') + '</li>'
+      nav +=
+        '<li>' +
+        '<div class="collapsible-header waves-effect waves-teal">' +
+        linkto('global', 'Global') +
+        '</div>' +
+        '</li>'
     } else {
       nav +=
         '<li>' +
@@ -497,12 +531,10 @@ function buildNav(members) {
         'Global' +
         '</div>' +
         '<div class="collapsible-body">' +
-        '<div class="row">' +
-        '<div class="col s12 m12">' +
+        '<div class="force-indent">' +
         '<ul>' +
         globalNav +
         '</ul>' +
-        '</div>' +
         '</div>' +
         '</div>' +
         '</li>'
@@ -730,8 +762,11 @@ exports.publish = (taffyData, opts) => {
   view.htmlsafe = htmlsafe
   view.outputSourceFiles = outputSourceFiles
 
-  // Nav heading
+  // Nav title
   view.navTitle = buildNavTitle()
+
+  // Nav addons
+  view.navAddons = buildNavAddons()
 
   // Footer
   view.footer = templateOptions.footer
