@@ -12,13 +12,23 @@ footer {
   }
 }
 
+nav,
+footer {
+  background-color: #039be5 !important;
+}
+
 .sidenav .card {
   line-height: 1em;
-  margin-top: 0;
+  margin: 0;
+}
+
+.sidenav .card-image {
+  display: flex;
+  align-items: center;
 }
 
 .sidenav .card-image img {
-  height: 100%;
+  height: auto;
 }
 
 .sidenav .card-content {
@@ -28,6 +38,25 @@ footer {
 .sidenav .card-action {
   font-size: 16px;
   color: grey;
+}
+
+.sidenav .search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#search-results {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  max-height: 50vh;
+  overflow: auto;
+  z-index: 10;
 }
 
 .collapsible-header a {

@@ -21,6 +21,17 @@ let view
 
 let outdir = path.normalize(env.opts.destination)
 
+const searchIndex = []
+const searchEnabled =
+  templateOptions.search === undefined ? true : templateOptions.search
+
+function search() {
+  return {
+    enabled: searchEnabled,
+    list: searchIndex
+  }
+}
+
 function mkdirpSync(filepath) {
   return fs.mkdirSync(filepath, { recursive: true })
 }
@@ -340,6 +351,14 @@ function buildItemNav(item, itemsSeen, linktoFn) {
 
     itemNav += '</div>'
 
+    if (searchEnabled)
+      searchIndex.push(
+        JSON.stringify({
+          title: item.longname,
+          link: linktoFn(item.longname, linkTitle, 'collection-item')
+        })
+      )
+
     if (methods.length || children.length) {
       itemNav += '<div class="collapsible-body">'
       itemNav += '<div class="force-indent">'
@@ -352,6 +371,14 @@ function buildItemNav(item, itemsSeen, linktoFn) {
           itemNav += linkto(method.longname, method.name)
           itemNav += '</div>'
           itemNav += '</li>'
+
+          if (searchEnabled)
+            searchIndex.push(
+              JSON.stringify({
+                title: method.longname,
+                link: linkto(method.longname, method.name, 'collection-item')
+              })
+            )
         }
       }
 
@@ -762,6 +789,12 @@ exports.publish = (taffyData, opts) => {
   view.htmlsafe = htmlsafe
   view.outputSourceFiles = outputSourceFiles
 
+  // Favicon
+  if (templateOptions.favicon) {
+    copyFile(templateOptions.favicon)
+    view.favicon = templateOptions.favicon
+  }
+
   // Nav title
   view.navTitle = buildNavTitle()
 
@@ -774,6 +807,9 @@ exports.publish = (taffyData, opts) => {
   // once for all
   view.nav = buildNav(members)
   attachModuleSymbols(find({ longname: { left: 'module:' } }), members.modules)
+
+  // Search
+  view.search = search()
 
   // generate the pretty-printed source files first so other pages can link to them
   if (outputSourceFiles) {
