@@ -63,6 +63,10 @@ footer {
   color: rgba(0, 0, 0, 0.87);
 }
 
+.collapsible-header.waves-effect a {
+  padding: 0;
+}
+
 .collapsible-body .force-indent {
   padding-left: 15px;
 }
