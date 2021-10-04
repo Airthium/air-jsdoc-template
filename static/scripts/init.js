@@ -1,3 +1,4 @@
+// Materialize CSS
 document.addEventListener('DOMContentLoaded', function () {
   var sidenavs = document.querySelectorAll('.sidenav')
   M.Sidenav.init(sidenavs)
@@ -5,3 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const collapsibles = document.querySelectorAll('.collapsible')
   M.Collapsible.init(collapsibles)
 })
+
+// Highlightjs
+hljs.initLineNumbersOnLoad()
+hljs.highlightAll()
