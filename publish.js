@@ -341,7 +341,8 @@ function buildItemNav(item, itemsSeen, linktoFn) {
     let itemNav = '<li>'
 
     if (methods.length || children.length) {
-      itemNav += '<div class="collapsible-header waves-effect waves-teal">'
+      itemNav +=
+        '<div class="collapsible-header waves-effect waves-teal no-space">'
       itemNav += '<i class="material-icons">expand_more</i>'
     } else {
       itemNav += '<div class="collapsible-header">'
@@ -430,7 +431,7 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
 
   return (
     '<li>' +
-    '<div class="collapsible-header waves-effect waves-teal">' +
+    '<div class="collapsible-header waves-effect waves-teal no-space">' +
     '<i class="material-icons">expand_more</i>' +
     itemHeading +
     '</div>' +

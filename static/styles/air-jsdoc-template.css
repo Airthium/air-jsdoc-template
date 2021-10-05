@@ -1,7 +1,31 @@
+/* Materialize specific */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #b3e5fc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #039be5;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
 header,
-main,
 footer {
   padding-left: 300px;
+}
+
+main {
+  padding-left: 300px;
+  flex: 1 1 auto;
 }
 
 @media only screen and (max-width: 992px) {
@@ -63,8 +87,12 @@ footer {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.collapsible-header.waves-effect a {
-  padding: 0;
+.collapsible-header.no-space i {
+  margin-right: 0;
+}
+
+.collapsible-header.no-space a {
+  padding-left: 0 !important;
 }
 
 .collapsible-body .force-indent {
@@ -213,7 +241,49 @@ h5,
 }
 
 /* Highlightjs specific */
-/* for block of numbers */
+
+/*
+red    #c82829
+orange #f5871f
+yellow #eab700
+green  #718c00
+aqua   #3e999f
+blue   #4271ae
+purple #8959a8
+*/
+
+.hljs {
+  background: white;
+}
+
+.hljs-keyword {
+  color: #4271ae;
+}
+
+.hljs-string {
+  color: #f5871f;
+}
+
+.hljs-attr {
+  color: #3e999f;
+}
+
+.hljs-comment {
+  color: #718c00;
+}
+
+.hljs-class {
+  color: #c82829;
+}
+
+.hljs-title.function_ {
+  color: #eab700;
+}
+
+.hljs-ln tr {
+  border-bottom: none;
+}
+
 .hljs-ln-numbers {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -231,7 +301,6 @@ h5,
   /* your custom style here */
 }
 
-/* for block of code */
 .hljs-ln-code {
-  padding-left: 10px;
+  padding-left: 10px !important;
 }
