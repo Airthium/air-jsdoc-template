@@ -1,5 +1,7 @@
 # Air JSDoc template
 
+**[Live demo](https://airthium.github.io/air-jsdoc-template/)**
+
 Inspired from the [JSDoc default template](https://github.com/jsdoc/jsdoc/tree/main/packages/jsdoc/templates/default).
 
 Add sub-namespaces support, search, favicon, title block, code highlight, ...
