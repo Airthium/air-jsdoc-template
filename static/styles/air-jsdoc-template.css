@@ -45,6 +45,10 @@ footer {
   background-color: #039be5 !important;
 }
 
+.footer-copyright {
+  padding-left: 0.75rem !important;
+}
+
 .sidenav .card {
   line-height: 1em;
   margin: 0;
