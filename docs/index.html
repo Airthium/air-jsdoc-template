@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+
+        <title>Home</title>
+
+        <link rel="icon" href="./demo/icon.png" />
+
+        <!-- Materialize -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+        <!-- Highlightjs -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+
+        <link rel="stylesheet" href="styles/air-jsdoc-template.css" />
+    </head>
+
+    <body>
+        <header>
+            <div class="navbar-fixed">
+                <nav>
+                    <div class="row">
+                        <div class="col s12">
+                            <a href="#" class="brand-logo">Home</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <ul class="sidenav sidenav-fixed">
+                <li><div class="card horizontal"><div class="card-image"><img alt="Home" src="./demo/icon.png" /></div><div class="card-stacked"><div class="card-content"><a href="index.html">Air JSDoc Template</a></div><div class="card-action">JSDoc template</div></div></div></li>
+                <li class="search">
+                    <div class="search-wrapper">
+                        <input id="search" type="search" placeholder="Search" required />
+                        <i class="material-icons">search</i>
+                        <div id="search-results" class="collection" style="display: none;"></div>
+                    </div>
+                </li>
+                <li><div class="collapsible-header"><a href="https://github.com/Airthium/air-jsdoc-template" target="_blank" style="display: flex; align-items: center;"><i class="small material-icons">link</i>Github repository</a></div></li><li><div class="collapsible-header"><a href="https://www.npmjs.com/package/air-jsdoc-template" target="_blank" style="display: flex; align-items: center;"><i class="small material-icons">link</i>NPM</a></div></li>
+                <li>
+                    <ul class="collapsible"><li><div class="collapsible-header waves-effect waves-teal no-space"><i class="material-icons">expand_more</i>Namespaces</div><div class="collapsible-body"><div class="force-indent"><ul class="collapsible"><li><div class="collapsible-header waves-effect waves-teal no-space"><i class="material-icons">expand_more</i><a href="Index_.html">Index</a></div><div class="collapsible-body"><div class="force-indent"><ul class="collapsible"><li><div class="collapsible-header"><a href="Index_.html#.Index">Index</a></div></li><li><div class="collapsible-header waves-effect waves-teal no-space"><i class="material-icons">expand_more</i><a href="Index.Sub.html">Sub</a></div><div class="collapsible-body"><div class="force-indent"><ul class="collapsible"><li><div class="collapsible-header"><a href="Index.Sub.html#.SubIndex">SubIndex</a></div></li></ul></div></div></li></ul></div></div></li></ul></div></div></li></ul>
+                </li>
+            </ul>
+        </header>
+        <main>
+            <div class="row">
+                <div class="col s12">
+                    
+
+
+
+    
+
+
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+    
+
+
+    <section>
+        <article><h1>Air JSDoc template</h1>
+<p>Inspired from the <a href="https://github.com/jsdoc/jsdoc/tree/main/packages/jsdoc/templates/default">JSDoc default template</a>.</p>
+<p>Add sub-namespaces support, search, favicon, title block, code highlight, ...</p>
+<p>Uses <a href="https://materializecss.com/">Materialize</a>.</p>
+<p><img src="screenshot.png" alt="Screenshot"></p>
+<h2>Options</h2>
+<p>Options take place in the <code>templateOptions</code> attribute of the jsdoc configuration file.</p>
+<h3>Icon</h3>
+<p><code>icon {string}</code></p>
+<p>Icon to be displayed on the side menu.</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-json"><code>&quot;icon&quot;: &quot;./icon.png&quot;,
+</code></pre>
+<h3>Title</h3>
+<p><code>title {string}</code></p>
+<p>Title to be displayed on the side menu.</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-json"><code>&quot;title&quot;: &quot;Air JSDoc Template&quot;,
+</code></pre>
+<h3>Subtitle</h3>
+<p><code>subTitle {string}</code></p>
+<p>Subtitle to be displayed on the side menu.</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-json"><code>&quot;subTitle&quot;: &quot;JSDoc template&quot;,
+</code></pre>
+<h3>Favicon</h3>
+<p><code>favicon {string}</code></p>
+<p>Favicon.</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-json"><code>&quot;favicon&quot;: &quot;./icon.png&quot;,
+</code></pre>
+<h3>Menu</h3>
+<p><code>menu {Array}</code></p>
+<p>Menu items to append just after the title.</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-json"><code>&quot;menu&quot;: [
+    {
+        &quot;label&quot;: &quot;Github repository&quot;,
+        &quot;link&quot;: &quot;https://github.com/Airthium/air-jsdoc-template&quot;
+    }
+]
+</code></pre>
+<h3>Footer</h3>
+<p><code>footer {string}</code></p>
+<p>Footer.</p>
+<p>Example:</p>
+<pre class="prettyprint source lang-json"><code>&quot;footer&quot;: &quot;Copyright © 2021 Airthium&quot;
+</code></pre></article>
+    </section>
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </main>
+        <footer class="page-footer">
+            <div class="row">
+                <div class="col s12">
+                    <p>
+                        Documentation generated by <a href="https://github.com/jsdoc/jsdoc" style="color: white;">JSDoc 3.6.7</a> using <a href="https://github.com/Airthium/air-jsdoc-template" style="color: white;">air-jsdoc-template</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                Copyright © 2021 Airthium
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+        <script src="scripts/init.js"></script>
+        
+            <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6"></script>
+            <script src="scripts/search.js"></script>
+            <script>
+                initSearch([{"title":"Index","link":"<a href=\"Index_.html\" class=\"collection-item\"><a href=\"Index_.html\">Index</a></a>"},{"title":"Index.Index","link":"<a href=\"Index_.html#.Index\" class=\"collection-item\">Index</a>"},{"title":"Index.Sub","link":"<a href=\"Index.Sub.html\" class=\"collection-item\"><a href=\"Index.Sub.html\">Sub</a></a>"},{"title":"Index.Sub.SubIndex","link":"<a href=\"Index.Sub.html#.SubIndex\" class=\"collection-item\">SubIndex</a>"}])
+            </script>
+        
+    </body>
+</html>

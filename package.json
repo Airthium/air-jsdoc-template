@@ -11,7 +11,7 @@
   "homepage": "https://github.com/Airthium/air-jsdoc-template#readme",
   "main": "publish.js",
   "scripts": {
-    "test": "jsdoc -c jsdoc.config.json && cp screenshot.png out/screenshot.png"
+    "test": "jsdoc -c demo/jsdoc.config.json && cp screenshot.png docs/screenshot.png"
   },
   "bugs": {
     "url": "https://github.com/Airthium/air-jsdoc-template/issues"

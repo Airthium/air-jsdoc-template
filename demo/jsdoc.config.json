@@ -1,19 +1,19 @@
 {
   "source": {
-    "include": ["./src"]
+    "include": ["./demo/src"]
   },
   "plugins": ["plugins/markdown"],
   "opts": {
-    "destination": "./out",
+    "destination": "./docs",
     "recurse": true,
     "readme": "README.md",
     "template": "./"
   },
   "templateOptions": {
-    "icon": "./icon.png",
+    "icon": "./demo/icon.png",
     "title": "Air JSDoc Template",
     "subTitle": "JSDoc template",
-    "favicon": "./icon.png",
+    "favicon": "./demo/icon.png",
     "menu": [
       {
         "label": "Github repository",
