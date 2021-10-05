@@ -1,16 +1,14 @@
 {
-  "name": "air-jsdoc-template",
+  "name": "@airthium/air-jsdoc-template",
   "description": "Air JSDoc template",
   "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Airthium/air-jsdoc-template"
+    "url": "git+https://github.com/Airthium/air-jsdoc-template.git"
   },
-  "author": {
-    "name": "Airthium",
-    "url": "https://github.com/orgs/Airthium/people"
-  },
+  "author": "Airthium (https://github.com/orgs/Airthium/people)",
   "license": "MIT",
+  "homepage": "https://github.com/Airthium/air-jsdoc-template#readme",
   "main": "publish.js",
   "scripts": {
     "test": "jsdoc -c jsdoc.config.json && cp screenshot.png out/screenshot.png"
