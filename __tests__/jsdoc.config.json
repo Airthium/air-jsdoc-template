@@ -1,0 +1,36 @@
+{
+  "source": {
+    "include": ["./__tests__/src"]
+  },
+  "plugins": ["plugins/markdown"],
+  "opts": {
+    "destination": "./out",
+    "recurse": true,
+    "readme": "README.md",
+    "template": "./"
+  },
+  "templates": {
+    "default": {
+      "staticFiles": {
+        "include": ["./__tests__/screenshot.png"]
+      }
+    }
+  },
+  "templateOptions": {
+    "icon": "./__tests__/icon.png",
+    "title": "Air JSDoc Template",
+    "subTitle": "JSDoc template",
+    "favicon": "./__tests__/icon.png",
+    "menu": [
+      {
+        "label": "Github repository",
+        "link": "https://github.com/Airthium/air-jsdoc-template"
+      },
+      {
+        "label": "NPM",
+        "link": "https://www.npmjs.com/package/air-jsdoc-template"
+      }
+    ],
+    "footer": "Copyright © 2021 Airthium"
+  }
+}

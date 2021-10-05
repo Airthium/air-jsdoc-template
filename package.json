@@ -1,10 +1,37 @@
 {
   "name": "air-jsdoc-template",
+  "description": "Air JSDoc template",
   "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Airthium/air-jsdoc-template"
+  },
+  "author": {
+    "name": "Airthium",
+    "url": "https://github.com/orgs/Airthium/people"
+  },
+  "license": "MIT",
   "main": "publish.js",
+  "scripts": {
+    "test": "node node_module/jsdoc/jsdoc.js -c ./__tests__/jsdoc.config.json"
+  },
+  "bugs": {
+    "url": "https://github.com/Airthium/air-jsdoc-template/issues"
+  },
+  "keywords": [
+    "jsdoc",
+    "template",
+    "jsdoc template",
+    "javascript documentation"
+  ],
   "dependencies": {
     "@jsdoc/util": "^0.2.5",
     "common-path-prefix": "^3.0.0",
+    "jsdoc": "^3.6.7",
+    "lodash": "^4.17.21",
     "taffydb": "^2.7.3"
+  },
+  "devDependencies": {
+    "prettier": "^2.4.1"
   }
 }

@@ -56,10 +56,12 @@ footer {
 }
 
 .sidenav .card-content {
+  line-height: 32px;
   font-size: 32px;
 }
 
 .sidenav .card-action {
+  line-height: 16px;
   font-size: 16px;
   color: grey;
 }
