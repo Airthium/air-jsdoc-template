@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": ["./__tests__/src"]
+    "include": ["./src"]
   },
   "plugins": ["plugins/markdown"],
   "opts": {
@@ -9,18 +9,11 @@
     "readme": "README.md",
     "template": "./"
   },
-  "templates": {
-    "default": {
-      "staticFiles": {
-        "include": ["./__tests__/screenshot.png"]
-      }
-    }
-  },
   "templateOptions": {
-    "icon": "./__tests__/icon.png",
+    "icon": "./icon.png",
     "title": "Air JSDoc Template",
     "subTitle": "JSDoc template",
-    "favicon": "./__tests__/icon.png",
+    "favicon": "./icon.png",
     "menu": [
       {
         "label": "Github repository",

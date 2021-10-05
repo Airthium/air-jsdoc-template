@@ -13,7 +13,7 @@
   "license": "MIT",
   "main": "publish.js",
   "scripts": {
-    "test": "node node_module/jsdoc/jsdoc.js -c ./__tests__/jsdoc.config.json"
+    "test": "jsdoc -c jsdoc.config.json && cp screenshot.png out/screenshot.png"
   },
   "bugs": {
     "url": "https://github.com/Airthium/air-jsdoc-template/issues"

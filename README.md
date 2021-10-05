@@ -6,7 +6,7 @@ Add sub-namespaces support, search, favicon, title block, code highlight, ...
 
 Uses [Materialize](https://materializecss.com/).
 
-![](./__tests__/screenshot.png)
+![](./screenshot.png)
 
 ## Options
 

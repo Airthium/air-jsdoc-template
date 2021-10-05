@@ -28,6 +28,10 @@ main {
   flex: 1 1 auto;
 }
 
+main img {
+  max-width: 80%;
+}
+
 @media only screen and (max-width: 992px) {
   header,
   main,
