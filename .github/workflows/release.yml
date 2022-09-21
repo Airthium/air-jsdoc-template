@@ -15,8 +15,6 @@ jobs:
       - uses: actions/setup-node@master
       - name: Install
         run: yarn install
-      - name: Build
-        run: yarn build
 
       - uses: actions/setup-node@master
         with:
