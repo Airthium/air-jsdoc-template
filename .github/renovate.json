@@ -1,6 +1,7 @@
 {
-  "baseBranches": ["hotfix"],
   "extends": ["config:base"],
+  "schedule": ["before 9am on Monday"],
+  "baseBranches": ["hotfix"],
   "groupName": "all dependencies",
   "separateMajorMinor": false,
   "groupSlug": "all",
@@ -11,6 +12,7 @@
       "groupSlug": "all"
     }
   ],
+  "ignoreDeps": [],
   "lockFileMaintenance": {
     "enabled": false
   }
