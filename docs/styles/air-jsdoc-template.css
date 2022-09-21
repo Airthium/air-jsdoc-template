@@ -220,6 +220,16 @@ h5,
   margin-top: 1em;
 }
 
+.description ul {
+  padding-left: 20px;
+  list-style-type: '-';
+}
+
+.description ul li {
+  padding-left: 10px;
+  list-style-type: '-';
+}
+
 .code-caption {
   font-style: italic;
   font-size: 107%;

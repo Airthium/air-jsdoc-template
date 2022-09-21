@@ -1,35 +1,41 @@
 {
   "name": "@airthium/air-jsdoc-template",
   "description": "Air JSDoc template",
-  "version": "1.0.5",
+  "version": "1.0.7",
+  "homepage": "https://github.com/Airthium/air-jsdoc-template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Airthium/air-jsdoc-template.git"
+    "url": "https://github.com/Airthium/air-jsdoc-template.git"
   },
-  "author": "Airthium (https://github.com/orgs/Airthium/people)",
   "license": "MIT",
-  "homepage": "https://github.com/Airthium/air-jsdoc-template#readme",
+  "author": {
+    "name": "Airthium",
+    "url": "https://github.com/orgs/Airthium/people"
+  },
   "main": "publish.js",
-  "scripts": {
-    "test": "jsdoc -c demo/jsdoc.config.json && cp screenshot.png docs/screenshot.png"
-  },
-  "bugs": {
-    "url": "https://github.com/Airthium/air-jsdoc-template/issues"
-  },
   "keywords": [
     "jsdoc",
     "template",
     "jsdoc template",
     "javascript documentation"
   ],
+  "scripts": {
+    "depcheck": "depcheck",
+    "prettier": "prettier -l **/*.js",
+    "test": "jsdoc -c demo/jsdoc.config.json && cp screenshot.png docs/screenshot.png"
+  },
+  "bugs": {
+    "url": "https://github.com/Airthium/air-jsdoc-template/issues"
+  },
   "dependencies": {
-    "@jsdoc/util": "^0.2.5",
-    "common-path-prefix": "^3.0.0",
-    "jsdoc": "^3.6.7",
-    "lodash": "^4.17.21",
-    "taffydb": "^2.7.3"
+    "@jsdoc/util": "0.2.5",
+    "common-path-prefix": "3.0.0",
+    "jsdoc": "3.6.7",
+    "lodash": "4.17.21",
+    "taffydb": "2.7.3"
   },
   "devDependencies": {
-    "prettier": "2.6.1"
+    "depcheck": "1.4.3",
+    "prettier": "2.7.1"
   }
 }
