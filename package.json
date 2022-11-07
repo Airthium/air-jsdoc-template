@@ -28,9 +28,9 @@
     "url": "https://github.com/Airthium/air-jsdoc-template/issues"
   },
   "dependencies": {
-    "@jsdoc/util": "0.2.5",
+    "@jsdoc/util": "0.2.7",
     "common-path-prefix": "3.0.0",
-    "jsdoc": "3.6.11",
+    "jsdoc": "4.0.0",
     "lodash": "4.17.21",
     "taffydb": "2.7.3"
   },
