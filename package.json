@@ -30,7 +30,7 @@
   "dependencies": {
     "@jsdoc/util": "0.2.8",
     "common-path-prefix": "3.0.0",
-    "jsdoc": "4.0.0",
+    "jsdoc": "4.0.2",
     "lodash": "4.17.21",
     "taffydb": "2.7.3"
   },
