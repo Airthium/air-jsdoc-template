@@ -1,7 +1,7 @@
 {
   "name": "@airthium/air-jsdoc-template",
   "description": "Air JSDoc template",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "homepage": "https://github.com/Airthium/air-jsdoc-template",
   "repository": {
     "type": "git",
